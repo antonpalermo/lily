@@ -2,9 +2,12 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import expressSession from 'express-session';
 
+import passport from 'passport';
+
 import * as path from 'path';
 
 import routes from './routes';
+import './strategies/local-strategy';
 
 export function createApp() {
   const app = express();
@@ -23,6 +26,9 @@ export function createApp() {
   );
   app.use(express.urlencoded({ extended: true }));
   app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.use('/api', routes);
 
