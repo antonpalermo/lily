@@ -45,3 +45,6 @@ Thumbs.db
 .env
 .env.developement
 .env.production
+
+vite.config.*.timestamp*
+vitest.config.*.timestamp*
