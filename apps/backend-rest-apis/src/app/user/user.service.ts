@@ -13,6 +13,10 @@ export class UserService {
     return this.userModel.create({ name: 'Anton Palermo' });
   }
 
+  async findUserById(id: string) {
+    return await this.userModel.findById(id);
+  }
+
   async validateUserCredentials(username: string, password: string) {
     try {
       const user = await this.userModel.find({ username, password });
